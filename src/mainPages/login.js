@@ -1,0 +1,10 @@
+//import Heading from "../components/heading/heading.js";
+//import Footer from "../components/footer/index.js";
+import "../styles/typography.scss";
+import Login from "../components/login/index.js";
+//const heading = new Heading();
+const login = new Login();
+//heading.render();
+login.render();
+//const footer = new Footer();
+//footer.render();

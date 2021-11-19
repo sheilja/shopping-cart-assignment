@@ -1,0 +1,34 @@
+.productResult {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+  margin-left: 20px;
+}
+.productCart {
+  margin: 50px 10px;
+  padding-bottom: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 5% 55% 35% 5%;
+  border-bottom: dotted;
+  height: 500px;
+}
+.productImg {
+  margin: 0px 0px;
+  width: 100%;
+  height: 100%;
+}
+.product-title {
+  padding-left: 20px;
+}
+.product-description {
+  background-color: rgb(231, 228, 228);
+}
+.product-card_footer {
+  padding: 10px 0px;
+}

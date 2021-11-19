@@ -1,0 +1,51 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 15px;
+  align-content: center;
+}
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr 2fr;
+  padding-top: 40px;
+}
+.info {
+  padding-top: 40px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+}
+.formInput {
+  border: none;
+  border-bottom: 2px solid #484848;
+  padding: 10px;
+  padding-top: 0;
+  margin-bottom: 30px;
+
+  &::placeholder {
+    color: #484848;
+    font-size: 16px;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgb(0, 183, 255);
+
+    &::placeholder {
+      color: rgb(0, 183, 255);
+    }
+  }
+}
+.infoSubtitle {
+  padding-top: 10px;
+}
+.formSubmit {
+  padding: 15px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
