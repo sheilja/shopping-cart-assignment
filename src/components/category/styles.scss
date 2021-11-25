@@ -17,12 +17,10 @@ $shadow: 0px 5px
 }
 .category {
   display: grid;
-  //flex-direction: row;
   padding: 30px 0px;
   box-shadow: $shadow;
   justify-content: space-around;
   align-items: center;
-  //background-color: red;
 }
 .direction1 {
   grid-template-columns: 35% 65%;
@@ -30,7 +28,34 @@ $shadow: 0px 5px
 .direction2 {
   grid-template-columns: 65% 35%;
 }
+.categroryImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.categoryDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .content-center {
   align-self: center;
   text-align: center;
+}
+.categoryButton {
+  background-color: rgb(212, 41, 41);
+  padding: 10px 10px;
+  color: white;
+  align-self: center;
+  display: inline-block;
+  margin-top: 30px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  align-self: center;
+}
+.description {
+  margin-top: 15px;
 }

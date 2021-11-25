@@ -4,6 +4,7 @@ import API from "../../apiCalls/apiCalls";
 const sideNavigationBar = (filterProduct) => {
   const sidebarElement = document.createElement("aside");
   sidebarElement.classList.add("sideNavigation");
+  sidebarElement.id = "sideNavigation";
   const categoriesResponse = API.getData("/categories");
   categoriesResponse.then((categories) => {
     categories.sort((a, b) =>

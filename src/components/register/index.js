@@ -2,13 +2,11 @@ import "./styles.scss";
 
 class register {
   render() {
-    const mainContainer = document.createElement("div");
-    mainContainer.classList.add("mainContainer");
-    const main = document.createElement("main");
-    main.classList.add("main");
+    const content = document.createElement("div");
+    content.classList.add("content");
     const info = document.createElement("div");
     info.classList.add("info");
-    info.innerHTML = `        <h2 class="infoTtitle text-xl text-bold">Signup</h2>
+    info.innerHTML = `<h2 class="infoTtitle text-xl text-bold">Signup</h2>
     <p class="infoSubtitle text-sm">We do not share your personal details with anyone.</p>`;
 
     const form = document.createElement("form");
@@ -43,17 +41,17 @@ class register {
     submitElement.textContent = "Signup";
     form.appendChild(submitElement);
 
-    main.appendChild(info);
-    main.appendChild(form);
-    const body = document.querySelector("main");
+    content.appendChild(info);
+    content.appendChild(form);
+    const main = document.querySelector("main");
+    main.classList.add("mainContainer");
     const sildebar1 = document.createElement("div");
     sildebar1.classList.add("sildebar1");
     const sildebar2 = document.createElement("div");
     sildebar2.classList.add("sildebar2");
-    mainContainer.appendChild(sildebar1);
-    mainContainer.appendChild(main);
-    mainContainer.appendChild(sildebar2);
-    body.appendChild(mainContainer);
+    main.appendChild(sildebar1);
+    main.appendChild(content);
+    main.appendChild(sildebar2);
   }
 }
 export default register;

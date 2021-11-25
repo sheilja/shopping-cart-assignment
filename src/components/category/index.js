@@ -9,9 +9,8 @@ class category {
       categories.sort((a, b) =>
         a.order > b.order ? 1 : b.order > a.order ? -1 : 0
       );
-      const main1 = document.createElement("div");
-      main1.classList.add("mainContainer");
-      const body = document.querySelector("main");
+      const main = document.querySelector("main");
+      main.classList.add("mainContainer");
       const sildebar1 = document.createElement("div");
       sildebar1.classList.add("sildebar1");
       const sildebar2 = document.createElement("div");
@@ -20,6 +19,7 @@ class category {
       content.classList.add("content");
       let i = false;
       categories.map((c) => {
+        const id = c.id;
         if (c.enabled === true) {
           i = !i;
           const category = document.createElement("div");
@@ -28,19 +28,27 @@ class category {
             category.classList.add("direction1");
             category.innerHTML = `
             <img class="categroryImg" src="${imgUrl(c.imageUrl)}"/>
-            <div>
+            <div class="categoryDescription">
                 <h3 class="content-center text-xl text-bold">${c.name}</h3>
-                <p class="content-center text-md text-medium">${
+                <p class="content-center text-md text-medium description">${
                   c.description
                 }</p>
+                <a class="categoryButton" href="/product.html?id=${id}"">Explore ${
+              c.name
+            }</a>
             </div>  
         `;
           } else {
             category.classList.add("direction2");
             category.innerHTML = `
-            <div>
-                <h3 class="content-center">${c.name}</h3>
-                <p class="content-center">${c.description}</p>
+            <div class="categoryDescription">
+                <h3 class="content-center text-xl text-bold">${c.name}</h3>
+                <p class="content-center text-md text-medium description">${
+                  c.description
+                }</p>
+                <a class="categoryButton" href="/product.html?id=${id}"">Explore ${
+              c.name
+            }</a>
             </div>  
             <img class="categroryImg" src="${imgUrl(c.imageUrl)}"/>
         `;
@@ -48,10 +56,9 @@ class category {
           content.appendChild(category);
         }
       });
-      main1.appendChild(sildebar1);
-      main1.appendChild(content);
-      main1.appendChild(sildebar2);
-      body.appendChild(main1);
+      main.appendChild(sildebar1);
+      main.appendChild(content);
+      main.appendChild(sildebar2);
     });
   }
 }
