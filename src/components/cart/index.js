@@ -3,14 +3,16 @@ import CloseIcon from "../../../static/close.svg";
 import imgUrl from "../../utils/imgUrl";
 import cartUpdatedEvent from "../../utils/cartUpdatedEvent";
 
-const changeItemQuantity = (itemId, quantity) => () => {
+const changeQuantity = (itemId, quantity) => () => {
   let cartList = JSON.parse(localStorage.getItem("cart"));
   const item = cartList.find((product) => product.id === itemId);
   const updatedQuantity = item.quantity + quantity;
-  item.quantity =
-    updatedQuantity > 0 && updatedQuantity < 10
-      ? updatedQuantity
-      : item.quantity;
+  if (updatedQuantity > 0) {
+    item.quantity = updatedQuantity;
+  } else {
+    const index = cartList.findIndex((item) => item.id === itemId);
+    cartList.splice(index, 1);
+  }
   localStorage.setItem("cart", JSON.stringify(cartList));
   cartUpdatedEvent();
 };
@@ -45,15 +47,11 @@ export const updateCart = (products) => {
                     <div>
                         <h6 class="text-lg text-bold">${product.name}</h6>
                         <div class="cardQuantity">
-                            <button type="button" class="minusBbutton ${
-                              product.quantity === 1 && "buttonDisabled"
-                            } text-xl">-</button>
+                            <button type="button" class="minusBbutton text-xl">-</button>
                             <span class="cardQuantityText">${
                               product.quantity
                             }</span>
-                            <button type="button" class="plusBbutton ${
-                              product.quantity === 9 && "buttonDisabled"
-                            } text-xl">+</button>
+                            <button type="button" class="plusBbutton text-xl">+</button>
                             <span class="cardMrp">x Rs.${product.price}</span>
                         </div>
                     </div>
@@ -64,10 +62,10 @@ export const updateCart = (products) => {
             `;
 
       const plusButton = cartCard.querySelector(".plusBbutton");
-      plusButton.onclick = changeItemQuantity(product.id, 1);
+      plusButton.onclick = changeQuantity(product.id, 1);
 
       const minusButton = cartCard.querySelector(".minusBbutton");
-      minusButton.onclick = changeItemQuantity(product.id, -1);
+      minusButton.onclick = changeQuantity(product.id, -1);
 
       cart.appendChild(cartCard);
       total += product.price * product.quantity;
@@ -79,7 +77,7 @@ export const updateCart = (products) => {
     checkoutButton = document.createElement("div");
     checkoutButton.classList.add("cartCheckout");
     checkoutButton.innerHTML = `
-            <span class="text-lg text-bold">Checkout</span>
+            <span class="text-lg text-bold">Proceed to Checkout</span>
             <span class="text-lg text-bold">Total: Rs.${total}</span>
         `;
     cart.appendChild(checkoutButton);
